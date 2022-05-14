@@ -10,7 +10,7 @@ F и все матричные операции последовательно.
 import time
 import random
 import numpy as np
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 
 def print_matrix(Matrix, matrix_name, timetime):
     print(f"Матрица {matrix_name} промежуточное время = {round(timetime, 2)} seconds.")
@@ -90,13 +90,14 @@ try:
     print_matrix(F, "F", time_next - time_prev)
 
 
-    plt.title('Examples')
-    plt.xlabel("Numbers")
-    plt.ylabel("Volumes")
+    plt.title('Examples', fontsize=15)
+    plt.xlabel("Numbers", fontsize=13)
+    plt.ylabel("Values", fontsize=13)
+    plt.grid()
+    plt.gcf().canvas.manager.set_window_title("Вывод значений")
     for j in range(matrix_size):
-        plt.plot([i for i in range(matrix_size)], A[j][::], marker='o')
+        plt.plot([i for i in range(matrix_size)], A[j][::], marker='8')
     plt.show()
-    
     print(f"\nProgramm time {time.time() - start}")
 except FileNotFoundError:
     print("\nФайл text.txt в директории проекта не обнаружен.")
