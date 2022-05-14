@@ -11,6 +11,8 @@ import time
 import random
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sb
+import pandas as pd
 
 def print_matrix(Matrix, matrix_name, timetime):
     print(f"Матрица {matrix_name} промежуточное время = {round(timetime, 2)} seconds.")
@@ -89,7 +91,7 @@ try:
     time_next = time.time()
     print_matrix(F, "F", time_next - time_prev)
 
-
+    # 1 пример (matplotlib.pyplot)
     plt.title('Examples', fontsize=15)
     plt.xlabel("Numbers", fontsize=13)
     plt.ylabel("Values", fontsize=13)
@@ -98,6 +100,16 @@ try:
     for j in range(matrix_size):
         plt.plot([i for i in range(matrix_size)], A[j][::], marker='8')
     plt.show()
+
+    # 2 пример (matplotlib.pyplot)
+    fig, ax = plt.subplots(figsize=(5, 5))
+    ax.matshow(A)
+    plt.show()
+
+    # 3 пример (seaborn, pandas)
+    sb.catplot(data=pd.DataFrame(A), kind="violin")
+    plt.show()
+
     print(f"\nProgramm time {time.time() - start}")
 except FileNotFoundError:
     print("\nФайл text.txt в директории проекта не обнаружен.")
