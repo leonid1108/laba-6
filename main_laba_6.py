@@ -101,13 +101,13 @@ try:
         plt.plot([i for i in range(matrix_size)], A[j][::], marker='8')
     plt.show()
 
-    # 2 пример (matplotlib.pyplot)
+    # 2 пример (seaborn, pandas)
+    sb.catplot(data=pd.DataFrame(A), kind="violin")
+    plt.show()
+    
+    # 3 пример (matplotlib.pyplot)
     fig, ax = plt.subplots(figsize=(5, 5))
     ax.matshow(A)
-    plt.show()
-
-    # 3 пример (seaborn, pandas)
-    sb.catplot(data=pd.DataFrame(A), kind="violin")
     plt.show()
 
     print(f"\nProgramm time {time.time() - start}")
